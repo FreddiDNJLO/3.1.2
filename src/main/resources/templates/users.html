@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users</title>
+</head>
+<body>
+<br>
+<a href="/admin/new">Create user</a>
+<br>
+<h1>Users</h1>
+<table border="1">
+    <tr>
+        <th th:width="50">UserId</th>
+        <th th:width="120">Username</th>
+        <th th:width="120">Name</th>
+        <th th:width="50">Age</th>
+        <th th:width="150">Email</th>
+        <th th:width="50">Edit</th>
+        <th th:width="50">Delete</th>
+    </tr>
+    <tr th:each="users : ${users}">
+
+        <td th:utext="${users.id}">User_id</td>
+        <td th:utext="${users.username}">Name</td>
+        <td th:utext="${users.name}">Name</td>
+        <td th:utext="${users.age}">Age</td>
+        <td th:utext="${users.email}">Email</td>
+        <td>
+            <form th:action="@{'/admin/edit/' + ${users.id}}">
+                <input type="submit" class="buttonEdit" value="Edit"/>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{'/admin/delete/' + ${users.id}}">
+                <input type="submit" class="buttonDelete" value="Delete"/>
+            </form>
+        </td>
+    </tr>
+</table>
+<br>
+<button class="buttonLogout" onclick="window.location.href = '/logout';">Logout</button>
+</body>
+</html>
