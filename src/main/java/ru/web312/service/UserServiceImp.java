@@ -54,7 +54,8 @@ public class UserServiceImp implements UserService {
 
     @Override
     @Transactional
-    public void updateUser(User user) {
+    public void updateUser(User user, List<Long> roles) {
+        user.setRoles(roleService.findByIdRoles(roles));
         userRepository.updateUser(passwordCoder(user));
     }
 

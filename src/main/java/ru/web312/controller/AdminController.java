@@ -61,8 +61,7 @@ public class AdminController {
         if (bindingResult.hasErrors()) {
             return "edit";
         }
-        user.setRoles(roleService.findByIdRoles(roles));
-        userService.updateUser(user);
+        userService.updateUser(user, roles);
         return "redirect:/admin";
     }
 }

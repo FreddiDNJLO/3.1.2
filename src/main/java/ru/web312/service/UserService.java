@@ -10,7 +10,7 @@ public interface UserService {
     User getUserById(long id);
     void addUser(User user, List<Long> roles);
     void removeUser(long id);
-    void updateUser(User user);
+    void updateUser(User user, List<Long> roles);
     User getUserByLogin(String username);
     User passwordCoder(User user);
 }
